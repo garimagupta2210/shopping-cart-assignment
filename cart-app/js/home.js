@@ -35,6 +35,7 @@ function getCarouselItem(data,i){
 }
 
 function createCategory(data){
+    data.sort(function(a, b){return a.order-b.order});
     for(var i=0; i<data.length;i++){
       if(data[i].order > 0){
          $("#category-list").append(getCategoryItem(data[i]))
@@ -43,11 +44,11 @@ function createCategory(data){
 }
 
 function getCategoryItem(data){
-    return `<div class="row align-items-center category-card m-0">
+    return `<div class="row align-items-center category-card mb-1 mt-3">
                 <div class="col-5 col-sm-6 w-100 h-100">
                     <img src="../../${data.imageUrl}" alt=${data.bannerImageAlt} width="100%">
                 </div>
-                <div class="col-7 col-sm-6 text-center p-0">
+                <div class="col-7 col-sm-6 text-center pr-2">
                     <div><h5>${data.name}</h5></div>
                     <div><p>${data.description}</p></div>
                     <div><button class="modified-button m-auto" id=${data.id} onclick=saveCategoryType(this)>Explore ${data.key}</button></div>

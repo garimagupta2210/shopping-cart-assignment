@@ -42,7 +42,7 @@
                      <span><span  class="total-item-count">0</span> items</span>
                    </div>
                    <div class="cart-icon d-block d-sm-block d-md-block d-lg-none"  onclick="getCartItemList()">
-                    <span><i class="fa fa-shopping-cart"></i></span>
+                    <button><i class="fa fa-shopping-cart"></i></button>
                     <span><span  class="total-item-count">0</span> items</span>
                   </div>
                  </div>
@@ -60,13 +60,19 @@
                 <div class="carousel-inner" id="carousel-img-list">
                 
                 </div>
+                <a class="carousel-control-prev" href="#carousel-indicator-container" role="button" data-slide="prev">
+                  <span class="carousel-preNext">Prev</span>
+              </a>
+              <a class="carousel-control-next" href="#carousel-indicator-container" role="button" data-slide="next">
+                  <span class="carousel-preNext">Next</span>
+              </a>
               </div>
           </div>
         </div> 
         <div class="row mt-1" id="category-list">
 
         </div>
-        <div class="row display-none cart">
+        <div class="row display-none cart modal">
             <div class="col-12"></div>
             <div class="col-12 cart-heading bg-white mt-4">
               <h5 class="p-2">My Cart (<span  class="total-item-count">0</span>item)</h5>
@@ -78,7 +84,7 @@
                 <span class="footer-with-item">
                   <div><p class="text-center">Promocode can be applied on payment page</p></div>
                   <div>
-                     <button class="modified-button d-flex justify-content-between">
+                     <button class="modified-button d-flex justify-content-between" data-dismiss="modal">
                        <span>Proceed to Checkout</span>
                        <span><span class="grand-total"></span> &nbsp;<i class="fa fa-angle-right"></i></span>
                      </button>
@@ -86,7 +92,7 @@
                 </span>    
                 <span class="footer-with-no-item">
                   <div>
-                    <button class="modified-button justify-content-center">
+                    <button class="modified-button justify-content-center" data-dismiss="modal" onclick="closeModel()">
                       Start Shopping
                     </button> 
                </div>
@@ -117,7 +123,7 @@
               <span class="footer-with-item">
                 <div><p class="text-center">Promocode can be applied on payment page</p></div>
                 <div>
-                   <button class="modified-button d-flex justify-content-between">
+                   <button class="modified-button d-flex justify-content-between" data-dismiss="modal">
                      <span>Proceed to Checkout</span>
                      <span><span class="grand-total"></span> &nbsp;<i class="fa fa-angle-right"></i></span>
                    </button>
@@ -125,7 +131,7 @@
               </span>    
               <span class="footer-with-no-item">
                 <div>
-                  <button class="modified-button justify-content-center">
+                  <button class="modified-button justify-content-center" data-dismiss="modal" onclick="closeModel()">
                     Start Shopping
                   </button> 
                 </div>

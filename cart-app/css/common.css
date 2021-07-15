@@ -28,7 +28,15 @@ nav  a{
     width: max-content;
     float: right;
 }
-
+.cart-icon button{
+    background-color: var(--secondary-color);
+    /* padding:1rem 1.5rem; */
+    color:var(--primary-color);
+    cursor: pointer;
+    width: max-content;
+    border: none !important;
+    /* float: right; */
+}
 #logo{
     width: 7.5rem;
 }
@@ -46,7 +54,6 @@ footer{
     margin: 0 auto; 
 }
 
-
 @media (min-width: 576px){
     #logo{
         width: 10rem;
@@ -56,6 +63,13 @@ footer{
 @media (min-width: 992px){
     .modified-container > div{
         width: 76%;
+        margin: 0 auto; 
+    }
+}
+
+@media (min-width: 992px) and (max-width:1211px){
+    .modified-container > div{
+        width: 100%;
         margin: 0 auto; 
     }
 }

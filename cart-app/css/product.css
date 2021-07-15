@@ -50,7 +50,15 @@
     overflow: hidden;
     margin-top: 0rem;
 }
-
+.mrp-price{
+    font-size: 12px;
+}
+.cost-price{
+    padding-bottom: 5px;
+}
+.buyNowWidth{
+    width: 50%;
+}
  .card{
      border-radius: 0;
      border-right: 0.2rem solid var(--border-color);

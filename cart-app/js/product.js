@@ -1,6 +1,7 @@
 var productList = [];
-
-
+var filteredList = [];
+let categoryFlag = false;
+let categoryId;
 $(document).ready(function(){
     $.get("http://localhost:3000/server/categories", function(data, status){
         createSidebar(data)
@@ -20,16 +21,31 @@ function setNavItemName(current){
       if(screenWidth <= 575){
         $('#category-list').hide();
     }
+    categoryFlag = true;
     var id =$(current).attr('id');
+    if(categoryId == id){
+      categoryFlag = false;
+    }else{
+      categoryId = id;
+    }
     var categoryName = $(current).html();
     $('#category-name').html(categoryName);
     $('.sidebar-item-list').removeClass('sidebar-item-list-active');
-    $(current).addClass('sidebar-item-list-active');
-    var filteredList = productList.filter((product)=> product.category == id)
+    if(filteredList.length === productList.length){
+      categoryFlag = true;
+    }
+    filteredList = productList;
+    
+    if(categoryFlag){
+      $(current).addClass('sidebar-item-list-active');
+      filteredList = productList.filter((product)=> product.category == id)
+    }
+    
     createProductList(filteredList);
 }
 
 function createSidebar(data){
+  data.sort(function(a, b){return a.order-b.order});
     for(var i=0; i<data.length;i++){
         if(data[i].order > 0){
              if(i == 0){
@@ -40,13 +56,12 @@ function createSidebar(data){
         }
     }
 }
-8
 
 function getProductBasedOnCategory(){
   var category = localStorage.getItem('categoryType');
   $.get("http://localhost:3000/server/products", function(data, status){
     productList = data;
-    if(category != undefined && category != null){
+    if(category != undefined && category != null && categoryFlag){
         var filteredList = productList.filter((product)=> product.category == category)
         createProductList(filteredList);
     }else{
@@ -108,9 +123,9 @@ function createProductList(data){
             <div class="card-footer border-top-0 bg-white d-none d-sm-block d-md-block d-lg-none">
                 <span><button class="modified-button" onclick="addItemToCart(this)" data-toggle="modal" id=${data[i].id} data-target="#alert-modal">Buy Now @ Rs.${data[i].price}</button></span>
               </div>
-            <div class="card-footer border-top-0 bg-white d-none d-sm-none d-md-none d-lg-flex justify-content-between align-items-end">
-            <span>MRP Rs.${data[i].price}</span>
-            <span><button class="modified-button p-1" onclick="addItemToCart(this)" id=${data[i].id} data-toggle="modal" data-target="#alert-modal">Buy Now</button></span>
+            <div class="card-footer mrp-price border-top-0 bg-white d-none d-sm-none d-md-none d-lg-flex justify-content-between align-items-end p-2">
+            <span class="cost-price">MRP Rs.${data[i].price}</span>
+            <span class="buyNowWidth"><button class="modified-button p-1" onclick="addItemToCart(this)" id=${data[i].id} data-toggle="modal" data-target="#alert-modal">Buy Now</button></span>
             </div>
           </div>
         </div>`

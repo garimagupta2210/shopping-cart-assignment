@@ -12,22 +12,39 @@ function registerUser(event){
     document.getElementById('email-alert').style.display = "none";
     document.getElementById('password-alert').style.display = "none";
     document.getElementById('confirm-password-alert').style.display = "none";
+    if (firstName){
+        firstName = firstName.trim();
+    }
     if(firstName == "" || firstName == undefined){
     document.getElementById('first-name-alert').style.display = "block";
     validationCheck = false;
+    }
+    if (lastName){
+        lastName = lastName.trim();
     }
     if(lastName == "" || lastName == undefined){
         document.getElementById('last-name-alert').style.display = "block";
         validationCheck = false;
     }
-        if(email == '' || reg.test(email) == false || email == undefined){
-            document.getElementById('email-alert').style.display = "block";
-            validationCheck = false;
-        }
-    if(password == "" || password == undefined){
+    if(email == '' || reg.test(email) == false || email == undefined){
+        document.getElementById('email-alert').style.display = "block";
+        validationCheck = false;
+    }
+    if(password){
+        password=password.trim();
+    }
+    if(password == "" ||  password.length<6){
         document.getElementById('password-alert').style.display = "block";
         validationCheck = false;
     }
+     //character length of password validation  
+     if (password.search(/\d/) == -1)  {
+         document.getElementById("pswdMessag").innerHTML = "password must contain 1 number";
+        }else if (password.search(/[a-zA-Z]/) == -1){
+         document.getElementById("pswdMessag").innerHTML = "password must contain 1 alphabat";
+         validationCheck= false;
+     }
+      //minimum password length validation  
     if(confirmPassword == "" || confirmPassword != password || confirmPassword == undefined){
         document.getElementById('confirm-password-alert').style.display = "block";
         validationCheck = false;

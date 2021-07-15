@@ -37,9 +37,9 @@ function getCartRow(cartItem){
                                 <div class="col-2 p-0"><img src="../../${cartItem.imageURL}" alt="${cartItem.name}" width="100%"/></div>
                                 <div class="col-7 col-sm-7">
                                 <p class="m-0">${cartItem.name}</p>
-                                <span class="plus-icon" onclick="incrementProductCount(this)" id=${cartItem.id}>+</span>
-                                <span>${cartItem.count}</span>
                                 <span class="minus-icon" onclick="decrementProductCount(this)" id=${cartItem.id}>-</span>
+                                <span>${cartItem.count}</span>
+                                <span class="plus-icon" onclick="incrementProductCount(this)" id=${cartItem.id}>+</span>
                                 <span>*</span>
                                 <span>Rs.${cartItem.price}</span>
                                 </div>
