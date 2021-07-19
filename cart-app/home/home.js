@@ -1,9 +1,9 @@
 
 $(document).ready(function () {
-    $.get("http://localhost:3000/server/banners", function (result, status) {
+    $.get("http://localhost:3000/banners", function (result, status) {
         createCarousel(result)
     });
-    $.get("http://localhost:3000/server/categories", function (data, status) {
+    $.get("http://localhost:3000/categories", function (data, status) {
         createCategory(data)
     });
     totalItemInCart()
@@ -59,7 +59,7 @@ function getCategoryItem(data){
 
 function saveCategoryType(current){
   localStorage.setItem('categoryType',$(current).attr('id'))
-  location.href = "product.html";
+  location.href = "./../products/product.html";
 }
 
 function totalItemInCart(){

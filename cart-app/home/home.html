@@ -11,12 +11,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../js/home.js"></script>
-    <script src="../js/cart.js"></script>
-    <link  rel="stylesheet" href="../css/home.css">
-    <link  rel="stylesheet" href="../css/common.css">
-    <link  rel="stylesheet" href="../css/modal.css">
-    <link  rel="stylesheet" href="../css/global.css">
+    <script src="./home.js"></script>
+    <script src="./../cart/cart.js"></script>
+    <link  rel="stylesheet" href="./../home/home.css">
+    <link  rel="stylesheet" href="./../scss/common.css">
+    <link  rel="stylesheet" href="./../scss/modal.css">
+    <link  rel="stylesheet" href="./../scss/global.css">
 </head>
 <body>
     <header>
@@ -28,14 +28,14 @@
                   </div>
                   <div class="d-none d-sm-block col-sm-6 col-md-6 col-lg-8">
                    <ul>
-                     <li><a href = "home.html">Home</a></li>
-                     <li class="ml-4"><a href = "product.html">Products</a></li>
+                    <li><a href = "./../home/home.html">Home</a></li>
+                    <li class="ml-4"><a href = "./../products/product.html">Products</a></li>
                    </ul>
                   </div>
                   <div class="col-6 col-sm-3 col-sm-3 col-md-3 col-lg-2 p-0">
                    <ul class="text-right d-none d-sm-block">
-                     <li class="mr-2"><a href = "login.html">SignIn</a></li>
-                     <li><a href = "register.html">Register</a></li>
+                    <li class="mr-2"><a href = "./../login/login.html">SignIn</a></li>
+                    <li><a href = "./../register/register.html">Register</a></li>
                    </ul>
                    <div class="cart-icon d-none d-sm-none d-md-none d-lg-block" data-toggle="modal" data-target="#cart-modal" onclick="getCartItemList()">
                      <span><i class="fa fa-shopping-cart"></i></span>
@@ -50,7 +50,7 @@
              </div>
         </nav>
        </header>
-    <main class="container-fluid modified-container p-0">
+    <section class="container-fluid modified-container p-0">
         <div class="row">
           <div class="col-12 p-0" >
               <div id="carousel-indicator-container" class="carousel slide" data-ride="carousel">
@@ -99,7 +99,7 @@
                 </span>
            </div>
        </div>     
-    </main>
+    </section>
     <footer class="container-fluid modified-container p-0 m-0">
         <div class="row" >
           <div class="col-sm-12">

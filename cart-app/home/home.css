@@ -41,6 +41,9 @@
     .carousel-indicators li{
         bottom: -3rem;
     }
+    .category-card{
+        padding-bottom: 0.75rem;
+    }
 }
 
 @media (min-width: 992px){

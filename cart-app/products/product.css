@@ -73,11 +73,25 @@
     .sidebar{
         display: none;
     }
+    .card-description-container > div{
+        margin-bottom: 0.75rem;
+    }
+    .card-title{
+        margin-top:0.50rem;
+    }
+}
+@media (max-width: 425px){
+    .card-description-container > div{
+        margin-bottom: 0.75rem;
+    }
+    .card-title{
+        margin-top:0.50rem;
+    }
 }
 
 @media (min-width: 992px){
 .card-description-container > div{
     width: 100%;
-}
+    }
 }
 

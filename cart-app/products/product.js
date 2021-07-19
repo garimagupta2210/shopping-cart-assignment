@@ -3,7 +3,7 @@ var filteredList = [];
 let categoryFlag = false;
 let categoryId;
 $(document).ready(function(){
-    $.get("http://localhost:3000/server/categories", function(data, status){
+    $.get("http://localhost:3000/categories", function(data, status){
         createSidebar(data)
       });
     $('.sidebar-icon').click(()=>{
@@ -59,7 +59,7 @@ function createSidebar(data){
 
 function getProductBasedOnCategory(){
   var category = localStorage.getItem('categoryType');
-  $.get("http://localhost:3000/server/products", function(data, status){
+  $.get("http://localhost:3000/products", function(data, status){
     productList = data;
     if(category != undefined && category != null && categoryFlag){
         var filteredList = productList.filter((product)=> product.category == category)

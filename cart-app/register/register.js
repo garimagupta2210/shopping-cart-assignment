@@ -12,6 +12,7 @@ function registerUser(event){
     document.getElementById('email-alert').style.display = "none";
     document.getElementById('password-alert').style.display = "none";
     document.getElementById('confirm-password-alert').style.display = "none";
+    // alert("function called");
     if (firstName){
         firstName = firstName.trim();
     }
@@ -49,8 +50,7 @@ function registerUser(event){
         document.getElementById('confirm-password-alert').style.display = "block";
         validationCheck = false;
     }
-    if(validationCheck == true){
-        location.href = "login.html";
+    else if (validationCheck == true){
+        location.href = "./../login/login.html";
     }
-    
 }

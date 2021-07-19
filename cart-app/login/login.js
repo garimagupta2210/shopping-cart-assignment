@@ -18,6 +18,6 @@ function validateUser(event){
         validationCheck = false;
     }
     if(validationCheck == true){
-        location.href = "home.html";
+        location.href = "./../home/home.html";
     }
 }
