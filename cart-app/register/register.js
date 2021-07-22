@@ -34,17 +34,10 @@ function registerUser(event){
     if(password){
         password=password.trim();
     }
-    if(password == "" ||  password.length<6){
+    if(password == "" || password == undefined){
         document.getElementById('password-alert').style.display = "block";
         validationCheck = false;
     }
-     //character length of password validation  
-     if (password.search(/\d/) == -1)  {
-         document.getElementById("pswdMessag").innerHTML = "password must contain 1 number";
-        }else if (password.search(/[a-zA-Z]/) == -1){
-         document.getElementById("pswdMessag").innerHTML = "password must contain 1 alphabat";
-         validationCheck= false;
-     }
       //minimum password length validation  
     if(confirmPassword == "" || confirmPassword != password || confirmPassword == undefined){
         document.getElementById('confirm-password-alert').style.display = "block";

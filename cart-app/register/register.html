@@ -52,21 +52,23 @@
               <div class="col-sm-6 col-md-6 col-lg-4">
                 <form onsubmit="registerUser(event)"> 
                     <div class="form-group border-0">
-                      <input type="text" id="first-name" class="modified-input"  placeholder="First Name">
+                      <input type="text" id="first-name" class="modified-input" autocomplete="off" placeholder="First Name">
                       <small id="first-name-alert" class="text-danger display-none">Enter first name</small>
                     </div>
                     <div class="form-group border-0">
-                        <input type="text" id="last-name" class="modified-input" placeholder="Last Name">
+                        <input type="text" id="last-name" class="modified-input"  autocomplete="off"placeholder="Last Name">
                         <small id="last-name-alert" class="text-danger display-none" >Enter last name</small>
                       </div>
                       <div class="form-group border-0">
-                        <input type="email" id="email" class="modified-input"  placeholder="Email">
+                        <input type="email" id="email" class="modified-input" autocomplete="off"  placeholder="Email">
                         <small id="email-alert" class="text-danger display-none">Enter email</small>
                       </div>
                     <div class="form-group">
-                      <input type="password" id="password" class="modified-input"  placeholder="Password">
+                      <input type="password" id="password" class="modified-input" 
+                            minlength="6" pattern="(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)"
+                            title="Password must have minimum six characters, atleast one number, atleast one character no spaces" 
+                            autocomplete="off" placeholder="Password">
                       <small id="password-alert" class="text-danger display-none">Enter password</small>
-                      <span id="pswdMessag" class="text-danger display-none"></span>
                     </div>
                     <div class="form-group">
                         <input type="password" id="confirm-password" class="modified-input" placeholder="Confirm Password">

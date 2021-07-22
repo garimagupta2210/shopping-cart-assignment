@@ -5,11 +5,28 @@ let categoryId;
 $(document).ready(function(){
     $.get("http://localhost:3000/categories", function(data, status){
         createSidebar(data)
+        var ele = document.getElementById('sel');
+
+            for (var i = 0; i < data.length; i++) {
+                // POPULATE SELECT ELEMEN+T WITH JSON.
+                if(data[i].order > 0){
+                  // if(i == 0){
+                  //    $('#category-name').html(data[i].name);
+                  //    localStorage.setItem('categoryType',data[i].id)
+                  // }
+                 $('#sel').append(
+                   `
+                   <option class="sidebar-option-size sidebar-item-list-active p-5" value=${data[i].id}  id=${data[i].id}>${data[i].name}</option>
+                   `
+                 );
+                }
+            }
       });
-    $('.sidebar-icon').click(()=>{
-        if($('#check-box').prop('checked') == true){
+    $('#sel').click(()=>{
+        if($('#category-name').prop('checked') == true){
             $('#category-list').hide();
-        }else{
+    }
+    else{
             $('#category-list').show();
         }
     })
@@ -17,10 +34,18 @@ $(document).ready(function(){
 });
 
 function setNavItemName(current){
+  console.log(current)
     var screenWidth = $(window).width();
       if(screenWidth <= 575){
         $('#category-list').hide();
-    }
+        categoryFlag = true;
+      var id =current;
+      if(categoryId == id){
+        categoryFlag = false;
+      }else{
+        categoryId = id;
+      }
+    }else{
     categoryFlag = true;
     var id =$(current).attr('id');
     if(categoryId == id){
@@ -31,6 +56,7 @@ function setNavItemName(current){
     var categoryName = $(current).html();
     $('#category-name').html(categoryName);
     $('.sidebar-item-list').removeClass('sidebar-item-list-active');
+  }
     if(filteredList.length === productList.length){
       categoryFlag = true;
     }
