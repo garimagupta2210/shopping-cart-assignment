@@ -1,13 +1,21 @@
+import './home.scss';
+import content from './home.hbs';
+import $ from 'jquery';
+jQuery.noConflict() ;
 
-$(document).ready(function () {
-    $.get("http://localhost:3000/banners", function (result, status) {
+let homeSection = document.querySelector('.home-content');
+function getHomeDetails() {
+    
+    $.get("http://localhost:3000/banners", function(result){
         createCarousel(result)
     });
-    $.get("http://localhost:3000/categories", function (data, status) {
+    
+    $.get("http://localhost:3000/categories", function(data){
         createCategory(data)
     });
-    totalItemInCart()
-});
+    totalItemInCart();
+    homeSection.innerHTML = content();
+};
 
 
 function createCarousel(data) {
@@ -35,10 +43,12 @@ function getCarouselItem(data,i){
 }
 
 function createCategory(data){
-    data.sort(function(a, b){return a.order-b.order});
+    data.sort(function(a,b){
+        return a.order - b.order;
+      });
     for(var i=0; i<data.length;i++){
       if(data[i].order > 0){
-         $("#category-list").append(getCategoryItem(data[i]))
+         $("#category-list-home").append(getCategoryItem(data[i]))
       }
     }  
 }
@@ -51,7 +61,7 @@ function getCategoryItem(data){
                 <div class="col-7 col-sm-6 text-center pr-2">
                     <div><h5>${data.name}</h5></div>
                     <div><p>${data.description}</p></div>
-                    <div><button class="modified-button m-auto" id=${data.id} onclick=saveCategoryType(this)>Explore ${data.key}</button></div>
+                    <div><button aria-label="" class="modified-button m-auto" id=${data.id} onclick=saveCategoryType(this)>Explore ${data.key}</button></div>
                 </div>
             </div>`
 }
@@ -59,8 +69,11 @@ function getCategoryItem(data){
 
 function saveCategoryType(current){
   localStorage.setItem('categoryType',$(current).attr('id'))
-  location.href = "./../products/product.html";
+//   location.href = "./../products/product.html";
+    let item = document.getElementById('products');
+    item.click();
 }
+window.saveCategoryType = saveCategoryType;
 
 function totalItemInCart(){
     var cartItemList = JSON.parse(localStorage.getItem('cartItemList'))
@@ -68,3 +81,5 @@ function totalItemInCart(){
       $('.total-item-count').html(cartItemList.length)
     }
 }
+
+document.getElementById("home").addEventListener("click",getHomeDetails );

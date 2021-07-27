@@ -1,0 +1,83 @@
+    <section class="container-fluid modified-container p-0">
+        <div class="row">
+          <div class="col-12 p-0" >
+              <div id="carousel-indicator-container" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators" id="carousel-indicator-list">
+
+                </ol>
+                <div class="carousel-inner" id="carousel-img-list">
+                
+                </div>
+                <a class="carousel-control-prev" href="#carousel-indicator-container" role="button" data-slide="prev">
+                  <span class="carousel-preNext">Prev</span>
+              </a>
+              <a class="carousel-control-next" href="#carousel-indicator-container" role="button" data-slide="next">
+                  <span class="carousel-preNext">Next</span>
+              </a>
+              </div>
+          </div>
+        </div> 
+        <div class="row mt-1" id="category-list-home">
+
+        </div>
+        <div class="row display-none cart modal">
+            <div class="col-12"></div>
+            <div class="col-12 cart-heading bg-white mt-4">
+              <h5 class="p-2">My Cart (<span  class="total-item-count">0</span>item)</h5>
+           </div>
+            <div class="col-12 p-0 mt-0" id="cart-body">
+  
+            </div>
+           <div class="col-12 bg-white p-4">
+                <span class="footer-with-item">
+                  <div><p class="text-center">Promocode can be applied on payment page</p></div>
+                  <div>
+                     <button class="modified-button d-flex justify-content-between" aria-label="" data-dismiss="modal">
+                       <span>Proceed to Checkout</span>
+                       <span><span class="grand-total"></span> &nbsp;<i class="fa fa-angle-right"></i></span>
+                     </button>
+                   </div>
+                </span>    
+                <span class="footer-with-no-item">
+                  <div>
+                    <button class="modified-button justify-content-center" aria-label="" data-dismiss="modal" onclick="closeModel()">
+                      Start Shopping
+                    </button> 
+               </div>
+                </span>
+           </div>
+       </div>     
+    </section>
+    <div class="modal fade" id="cart-modal" tabindex="-1" role="dialog"  aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content rounded-0">
+            <div class="modal-header bg-dark text-white rounded-0">
+              <h5 class="modal-title" id="modal-heading">My Cart (<span class="total-item-count">0</span> item)</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="cart-item-list">
+      
+            </div>
+            <div class="modal-footer d-block">
+              <span class="footer-with-item">
+                <div><p class="text-center">Promocode can be applied on payment page</p></div>
+                <div>
+                   <button class="modified-button d-flex justify-content-between" data-dismiss="modal" aria-label="">
+                     <span>Proceed to Checkout</span>
+                     <span><span class="grand-total"></span> &nbsp;<i class="fa fa-angle-right"></i></span>
+                   </button>
+                 </div>
+              </span>    
+              <span class="footer-with-no-item">
+                <div>
+                  <button class="modified-button justify-content-center" data-dismiss="modal" aria-label="" onclick="closeModel()">
+                    Start Shopping
+                  </button> 
+                </div>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>

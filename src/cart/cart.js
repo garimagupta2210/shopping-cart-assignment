@@ -1,3 +1,5 @@
+import $ from 'jquery';
+jQuery.noConflict() ;
 
 function getCartItemList(){
     var cartItemList = JSON.parse(localStorage.getItem('cartItemList'));
@@ -7,7 +9,7 @@ function getCartItemList(){
     if(screenWidth < 992){
         $('.sidebar').hide();
         $('.product').css("display","none");
-        $('#category-list').css("display","none");
+        $('#category-list-home').css("display","none");
         $('#carouselExampleIndicators').css('display','none')
         $('.cart').css("display","block");
     }
@@ -24,8 +26,12 @@ function getCartItemList(){
         $('.footer-with-no-item').css('display',"block");                           
         $('.footer-with-item').css('display',"none");
     }
-        $('.grand-total').html(sum)
+        $('.grand-total').html(sum);
+        totalItemInCart();
 }
+
+window.getCartItemList = getCartItemList;
+
 function totalItemInCart(){
     var cartItemList = JSON.parse(localStorage.getItem('cartItemList'))
     if(cartItemList != null && cartItemList != undefined){
@@ -66,9 +72,11 @@ function incrementProductCount(current){
   var cartItemIndex = cartItemList.findIndex((product)=> product.id == id);
   var updatedCount = cartItemList[cartItemIndex]['count'] + 1;
   cartItemList[cartItemIndex]['count'] = updatedCount;
-  localStorage.setItem('cartItemList',JSON.stringify(cartItemList))
+  localStorage.setItem('cartItemList',JSON.stringify(cartItemList));
   getCartItemList();
+  totalItemInCart();
 }
+window.incrementProductCount=incrementProductCount;
 function decrementProductCount(current){
     var newItemList = []
     var id = $(current).attr('id');
@@ -84,9 +92,11 @@ function decrementProductCount(current){
         cartItemList[cartItemIndex]['count'] = updatedCount;
         localStorage.setItem('cartItemList',JSON.stringify(cartItemList))
         getCartItemList();
+        totalItemInCart();
     }
 
 }
+window.decrementProductCount=decrementProductCount;
 function getDefaultCartRow(){
     $('#cart-item-list').append(`<div class="default-cart-row">
                                     <h6>No items in your cart</h6>

@@ -1,19 +1,24 @@
+import './product.scss';
+import './../scss/modal.scss';
+import content from './product.hbs';
+import $ from 'jquery';
+
+import './../cart/cart.js';
+jQuery.noConflict() ;
+
+
 var productList = [];
 var filteredList = [];
 let categoryFlag = false;
 let categoryId;
-$(document).ready(function(){
-    $.get("http://localhost:3000/categories", function(data, status){
+let productSection = document.querySelector('.home-content');
+function getProductDetails() {
+    $.get("http://localhost:3000/categories", function(data){
         createSidebar(data)
         var ele = document.getElementById('sel');
-
             for (var i = 0; i < data.length; i++) {
                 // POPULATE SELECT ELEMEN+T WITH JSON.
                 if(data[i].order > 0){
-                  // if(i == 0){
-                  //    $('#category-name').html(data[i].name);
-                  //    localStorage.setItem('categoryType',data[i].id)
-                  // }
                  $('#sel').append(
                    `
                    <option class="sidebar-option-size sidebar-item-list-active p-5" value=${data[i].id}  id=${data[i].id}>${data[i].name}</option>
@@ -30,8 +35,10 @@ $(document).ready(function(){
             $('#category-list').show();
         }
     })
+    getProductBasedOnCategory();
     totalItemInCart();
-});
+    productSection.innerHTML = content();
+}
 
 function setNavItemName(current){
   console.log(current)
@@ -69,6 +76,7 @@ function setNavItemName(current){
     
     createProductList(filteredList);
 }
+window.setNavItemName=setNavItemName;
 
 function createSidebar(data){
   data.sort(function(a, b){return a.order-b.order});
@@ -85,7 +93,7 @@ function createSidebar(data){
 
 function getProductBasedOnCategory(){
   var category = localStorage.getItem('categoryType');
-  $.get("http://localhost:3000/products", function(data, status){
+  $.get("http://localhost:3000/products", function(data){
     productList = data;
     if(category != undefined && category != null && categoryFlag){
         var filteredList = productList.filter((product)=> product.category == category)
@@ -117,6 +125,7 @@ function addItemToCart(current){
   $('.total-item-count').html(newCartItemList.length)
  
 }
+window.addItemToCart = addItemToCart;
 
 function totalItemInCart(){
   var cartItemList = JSON.parse(localStorage.getItem('cartItemList'))
@@ -147,7 +156,7 @@ function createProductList(data){
               </div>
             </div>
             <div class="card-footer border-top-0 bg-white d-none d-sm-block d-md-block d-lg-none">
-                <span><button class="modified-button" onclick="addItemToCart(this)" data-toggle="modal" id=${data[i].id} data-target="#alert-modal">Buy Now @ Rs.${data[i].price}</button></span>
+                <span><button aria-label="" class="modified-button" onclick="addItemToCart(this)" data-toggle="modal" id=${data[i].id} data-target="#alert-modal">Buy Now @ Rs.${data[i].price}</button></span>
               </div>
             <div class="card-footer mrp-price border-top-0 bg-white d-none d-sm-none d-md-none d-lg-flex justify-content-between align-items-end p-2">
             <span class="cost-price">MRP Rs.${data[i].price}</span>
@@ -158,3 +167,4 @@ function createProductList(data){
         $('#product-list').append(product)
     }
 }
+document.getElementById("products").addEventListener("click", getProductDetails);

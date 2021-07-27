@@ -17,11 +17,11 @@
     background-color: var(--input-border-color);
 }
 
-#category-list > div:nth-child(even){
+#category-list-home > div:nth-child(even){
     flex-flow: row-reverse;
 }
 
-#category-list > div:last-child{
+#category-list-home > div:last-child{
     box-shadow: none;
 }
 

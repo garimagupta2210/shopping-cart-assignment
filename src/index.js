@@ -1,3 +1,16 @@
+import content from './register/register.hbs';
+import $ from 'jquery';
+jQuery.noConflict() ;
+import './login/login.scss';
+import './../src/scss/global.scss';
+import './../src/scss/common.scss';
+
+let path = window.location.pathname.replace('/', '');
+let registerSection = document.querySelector('.home-content');
+const getRegisterPageDetails = () => {
+    registerSection.innerHTML = content();
+}
+
 function registerUser(event){
     event.preventDefault();
     var validationCheck = true;
@@ -41,9 +54,20 @@ function registerUser(event){
       //minimum password length validation  
     if(confirmPassword == "" || confirmPassword != password || confirmPassword == undefined){
         document.getElementById('confirm-password-alert').style.display = "block";
-        validationCheck = false;
+        validationCheck = false; 
     }
-    else if (validationCheck == true){
-        location.href = "./../login/login.html";
+    if(validationCheck == true){
+        let item = document.getElementById('login');
+        item.click();
+    }
+    else{
+        return false;
     }
 }
+window.registerUser= registerUser;
+
+
+if(!path){
+    getRegisterPageDetails();
+  }
+document.getElementById("register").addEventListener("click", getRegisterPageDetails);
